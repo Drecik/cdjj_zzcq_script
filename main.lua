@@ -200,7 +200,42 @@ init(0)
 
 require("common")
 local game = require("game")
-game.recycle()
+local action = require("action")
+
+game.enterQiDian()
+
+debugLog(game.getMapName())
+
+-- local left = "415,148"
+-- local a = "670,379"
+-- local diff_x = 255 / 333
+-- local diff_y = 231 / 333
+-- game.openMap()
+-- function moveTo(x, y)
+--     local touch_x = diff_x * x + 415
+--     local touch_y = diff_y * y + 148
+    
+--     mSleep(1000)
+--     dialog(math.floor(touch_x), math.floor(touch_y))
+--     action.touch(math.floor(touch_x), math.floor(touch_y))
+-- end
+
+-- moveTo(331, 341)
+
+-- game.closeAllDialog()
+
+-- game.recycle()
+
+-- dialog("....1")
+-- local index = addTSOcrDict("map_font.txt")
+-- dialog("....2: " .. index)
+-- local ret = tsOcrText(index, 1336, 5, 1392, 2, "A6A6A5,010101#CFCFCF,2A2A2B#C9C9C9,303030",90)
+-- dialog("....3")
+-- dialog("....4")
+-- dialog(ret)
+
+-- debugLog(game.getCoordinate())
+-- debugLog(game.getMapName())
 
 -- dialog(getScreenSize())
 -- x,y = findMultiColorInRegionFuzzy(0x9f9f9f, "", 100, 0, 0, 2000, 2000, { orient = 2 })
