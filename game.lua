@@ -61,18 +61,19 @@ function game.recycle()
     game.closeAllDialog()
 end
 
--- 获取当前地图名字（可能有部分字缺失）
+-- 获取当前地图名字
+local map_font_ts_ocr_index = addTSOcrDict("map_font.txt")
 function game.getMapName()
     game.closeAllDialog()
     
-    return ocrText(1325,6, 1409,25, 1)
+    return tsOcrText(map_font_ts_ocr_index, 1307, 5, 1414, 25, "A8A8A8 , 010101 # CDCDCD , 262626 # C4C4C4 , 2E2E2E", 90)
 end
 
 -- 获取当前坐标
 function game.getCoordinate()
     game.closeAllDialog()
     
-    local text = ocrText(1374,158, 1436,176, 0)
+    local text = ocrText(1374, 158, 1436, 176, 0)
     return string.splitToInt(text, ",")
 end
 

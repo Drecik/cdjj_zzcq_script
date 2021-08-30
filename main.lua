@@ -202,9 +202,30 @@ require("common")
 local game = require("game")
 local action = require("action")
 
-game.enterQiDian()
+-- game.enterQiDian()
 
 debugLog(game.getMapName())
+
+--内容已复制到剪贴板!
+--请注意自行修改文件名!
+-- local index = addTSOcrDict("map_font.txt")
+-- --请自行更改参数
+-- --1: 0,0,0,0 范围坐标，请自行修改
+-- --2: "A8A8A8 , 010101 # CDCDCD , 262626 # C4C4C4 , 2E2E2E" 偏色,多组或单组.请在偏色列表中选择
+-- --3: 90 匹配精度 【0-100】
+-- x, y = tsFindText(index, "盟重", 0, 0, 2000, 2000, "A8A8A8 , 010101 # CDCDCD , 262626 # C4C4C4 , 2E2E2E", 80)
+-- dialog("识别到的坐标 	x:"..x.." , y:"..y)
+
+-- --内容已复制到剪贴板!
+-- --请注意自行修改文件名!
+-- local index = addTSOcrDict("map_font.txt")
+-- --请自行更改参数
+-- --1: 0,0,0,0 范围坐标，请自行修改
+-- --2: "A8A8A8 , 010101 # CDCDCD , 262626 # C4C4C4 , 2E2E2E" 偏色,多组或单组.请在偏色列表中选择
+-- --3: 90 匹配精度 【0-100】
+-- local ret = tsOcrText(index, 1332,5, 1395, 25, "A8A8A8 , 010101 # CDCDCD , 262626 # C4C4C4 , 2E2E2E", 90)
+-- dialog("识别到的内容:"..ret)
+
 
 -- local left = "415,148"
 -- local a = "670,379"
