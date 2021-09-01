@@ -43,10 +43,38 @@ end
 -- 打开地图
 function game.openMap()
     game.closeAllDialog()
-    touch(1349,105)
+    touch(1385, 63)
 end
 
 ----------------- 界面操作 end ----------------
+
+-- 使用快捷栏
+function game.useQuikItem(id)
+    local begin_x, begin_y = 585, 670
+    local x, y = begin_x + (id - 1) * 65, begin_y
+    action.dTouch(x, y)
+end
+
+-- 使用可使用物品/可替换装备
+function game.useBagCanUseItems()
+    game.openBag()
+    
+    local begin_x, begin_y = 166, 84
+    local size = 80
+    
+    for i = 0, 5 do
+        for j = 0, 7 do
+            local x, y = begin_x + size * j, begin_y + size * i
+            if isColor(x, y, 0xa4c502, 60) then
+                action.dTouch(x - 40, y + 40)
+                mSleep(10)
+            elseif isColor(x, y + 55, 0x4daf0d, 80) then
+                action.dTouch(x - 40, y + 40)
+                mSleep(10)
+            end
+        end
+    end
+end
 
 -- 回收
 function game.recycle()
@@ -101,8 +129,4 @@ function game.enterNormalMap(x, y)
     mSleep(1000)
 end
 
--- 进入起点寺庙
-function game.enterQiDian()
-    game.enterNormalMap(337, 335)
-end
 return game

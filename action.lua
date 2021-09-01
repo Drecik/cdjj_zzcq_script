@@ -11,6 +11,16 @@ function action.touch(x, y, delay_time)
     touchUp(x, y)
 end
 
+function action.dTouch(x, y, delay_time)
+    if not delay_time then
+        delay_time = 20
+    end
+    
+    action.touch(x, y, 20)
+    mSleep(20)
+    action.touch(x, y, 20)
+end
+
 function action.touchMove(x, y, end_x, end_y, delay_time)
 end
 

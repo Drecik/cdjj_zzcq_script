@@ -202,9 +202,28 @@ require("common")
 local game = require("game")
 local action = require("action")
 
--- game.enterQiDian()
+local TICK_TIME = 5
 
-debugLog(game.getMapName())
+local TaskEnterMap = require("tasks.task_enter_map")
+local TaskCallFunc = require("tasks.task_call_func")
+
+local tasks = {}
+tasks[#tasks + 1] = TaskEnterMap.new(5, 1)                          -- 地图检测
+tasks[#tasks + 1] = TaskCallFunc.new(30, game.recycle)              -- 自动回收
+tasks[#tasks + 1] = TaskCallFunc.new(30, game.useBagCanUseItems)    -- 使用可食用物品
+
+while true do
+    local begin_time = os.time()
+    for _, task in ipairs(tasks) do
+        task:execute()
+        mSleep(1000)
+    end
+    local end_time = os.time()
+    if TICK_TIME - (end_time - begin_time) > 0 then
+        mSleep(TICK_TIME * 1000)
+    end
+end
+
 
 --内容已复制到剪贴板!
 --请注意自行修改文件名!
