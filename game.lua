@@ -31,13 +31,15 @@ end
 -- 打开回收
 function game.openRecycle()
     game.openBag()
+    game._openRecycle()
+    mSleep(1000)
+end
 
-    local x, y = findImage("recycle.png", 0, screen.h / 2, screen.w, screen.h, 2000000)
+function game._openRecycle()
+    local x, y = findImage("recycle.png", screen.w / 3, screen.h / 2, screen.w, screen.h, 2000000)
     if x ~= -1 then
         action.touch(x, y)
     end
-    
-     mSleep(1000)
 end
 
 -- 打开地图
@@ -59,11 +61,21 @@ end
 -- 使用可使用物品/可替换装备
 function game.useBagCanUseItems()
     game.openBag()
+    game._openRecycle()
+    mSleep(1000)
+    game._openRecycle()  -- 把背包位置固定到回收状态
+    mSleep(1000)
+    game._sort()
+    mSleep(1000)
     
     local begin_x, begin_y = getPos(166, 84, ALIGN_LEFT_TOP)
     local size = 80
     
+    local stop = false
     for i = 0, 5 do
+        if stop then
+            break
+        end
         for j = 0, 7 do
             local x, y = begin_x + size * j, begin_y + size * i
             if isColor(x, y, 0xa4c502, 60) then
@@ -75,6 +87,8 @@ function game.useBagCanUseItems()
             end
         end
     end
+
+    game.closeAllDialog()
 end
 
 -- 回收
@@ -87,7 +101,23 @@ function game.recycle()
     end
     
     mSleep(1000)
+    
+    game._sort()
     game.closeAllDialog()
+end
+
+-- 整理
+function game.sort()
+    game.openBag()
+    game._sort()
+    game.closeAllDialog()
+end
+
+function game._sort()
+    local x, y = findImage("sort.png", screen.w / 3, screen.h / 2, screen.w, screen.h, 2000000)
+    if x ~= -1 then
+        action.touch(x, y)
+    end
 end
 
 -- 获取当前地图名字
