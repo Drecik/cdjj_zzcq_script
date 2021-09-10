@@ -23,17 +23,20 @@ function action.dTouch(x, y, delay_time)
 end
 
 -- 点击图片
-function action.touchImage(pic_name, deviation)
+function action.touchImage(pic_name, deviation, x, y, end_x, end_y)
     if not deviation then
         deviation = 1000000
     end
-    local x, y = findImage(pic_name, 0, 0, screen.w, screen.h, 1000000)
+    if not x then
+        x, y, end_x, end_y = 0, 0, screen.w, screen.h
+    end
+    local img_x, img_y = findImage(pic_name, x, y, end_x, end_y, deviation)
     if x ~= -1 then
-        action.touch(x, y)
+        action.touch(img_x, img_y)
     end
 end
 
-function action.touchMove(x, y, end_x, end_y, delay_time)
+function action.touchMove(x, y, end_x, end_y, y, end_x, end_y, delay_time)
 end
 
 -- 点击一系列点
