@@ -8,10 +8,12 @@ local action = require("action")
 
 local TICK_TIME = 5
 
+local TaskEnterGame = require("tasks.task_enter_game")
 local TaskEnterMap = require("tasks.task_enter_map")
 local TaskCallFunc = require("tasks.task_call_func")
 
 local tasks = {}
+tasks[#tasks + 1] = TaskEnterGame.new(5, "com.sjjxxltztcq.cs")      -- 进程检测
 tasks[#tasks + 1] = TaskEnterMap.new(5, 1)                          -- 地图检测
 tasks[#tasks + 1] = TaskCallFunc.new(30, game.recycle)              -- 自动回收
 tasks[#tasks + 1] = TaskCallFunc.new(30, game.useBagCanUseItems)    -- 使用可食用物品
