@@ -4,6 +4,8 @@ local game = require("game")
 local Task = require("tasks.task")
 local TaskEnterMap = class.createClass(Task)
 
+-- 自动进入到某个地图
+
 local CONFIG = {
     [1] = {
         ["func"] = "enterQiDian",

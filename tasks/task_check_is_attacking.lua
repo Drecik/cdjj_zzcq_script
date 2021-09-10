@@ -5,6 +5,8 @@ local game = require("game")
 local Task = require("tasks.task")
 local TaskCheckIsAttacking = class.createClass(Task)
 
+-- 检测是否脱离挂机状态，并启动自动战斗
+
 function TaskCheckIsAttacking:ctor(_)
 end
 

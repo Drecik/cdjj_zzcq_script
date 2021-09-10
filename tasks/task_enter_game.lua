@@ -5,6 +5,8 @@ local game = require("game")
 local Task = require("tasks.task")
 local TaskEnterGame = class.createClass(Task)
 
+-- 检测游戏是否崩溃并自动进入游戏
+
 function TaskEnterGame:ctor(_, app_name)
     self._app_name = app_name
 end
